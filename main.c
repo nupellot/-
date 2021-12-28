@@ -13,7 +13,7 @@ typedef struct {  // Структура студента.
 
 int main(void) {
 	// Открываем исходный файл
-  FILE* source = fopen("source", "r");
+  FILE* source = fopen("school", "r");
 	if (source == NULL) {
 		printf("Ошибка открытия файла\n");
 		exit(1);
@@ -54,7 +54,7 @@ int main(void) {
 	// }
 
 	// Открываем файлы для записи в них данных.
-	FILE* zero = fopen("source", "w");
+	FILE* zero = fopen("school", "w");
 	FILE* one = fopen("1", "w");
 	FILE* two = fopen("2", "w");
 	FILE* threeOrMore = fopen("3 or more", "w");
@@ -98,7 +98,7 @@ int main(void) {
 	free(allStudents);
 
 	// Открываем файлы заново, но уже для чтения, а не записи.
-	zero = fopen("source", "r");
+	zero = fopen("school", "r");
 	one = fopen("1", "r");
 	two = fopen("2", "r");
 	threeOrMore = fopen("3 or more", "r");
@@ -112,6 +112,12 @@ int main(void) {
 	while ((c = fgetc(two)) != EOF) printf("%c", c);
 		printf("\033[41m%s\033[0m\n", "Содержимое файла \"3 or more\":");
 	while ((c = fgetc(threeOrMore)) != EOF) printf("%c", c);
+
+	// Закрываем файлы.
+	fclose(zero);
+	fclose(one);
+	fclose(two);
+	fclose(threeOrMore);
 }
 
 // Функция получения количества долгов студента.
